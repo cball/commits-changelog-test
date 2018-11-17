@@ -1,6 +1,7 @@
 # react-native-template-echobind
 
 going to try a fix... and a chore... and docs
+tests?
 
 ## Includes
 
