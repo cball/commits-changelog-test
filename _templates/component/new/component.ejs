@@ -1,0 +1,67 @@
+---
+to: src/components/<%= name %>/component.tsx
+---
+<% const comp = name -%>
+<% if(componentType === 'Class') { -%>
+import styled from '@emotion/native';
+import React, { Component } from 'react';
+import { View, ViewStyle } from 'react-native';
+import { colors } from '../../styles';
+
+interface Props {
+  /** prop info **/
+  cool: boolean;
+  /** prop info **/
+  style: ViewStyle;
+}
+
+interface State {
+  /** state info **/
+  myStateValue?: boolean;
+}
+
+const INITIAL_STATE: State = {
+  myStateValue: true,
+};
+
+const Container = styled(View)`
+  flex: 1;
+`
+
+/**
+ * Component docs: what does this component do?
+ */
+export class <%= comp %> extends Component<Props, State> {
+  public static readonly defaultProps: Props = { cool: true };
+  public state = INITIAL_STATE;
+
+  public render() {
+    return (
+      <View style={styles.container}>
+        {this.props.children}
+      </View>
+    );
+  }
+}
+<% } else { %>
+import React, { SFC } from "react";
+import { View, ViewStyle } from 'react-native';
+
+interface Props {
+  /** prop info **/
+  cool: boolean;
+  /** prop info **/
+  style: ViewStyle;
+}
+
+/**
+ * Component docs: what does this component do?
+ */
+export const <%= comp %>: SFC<Props> = ({ cool = true, children }) => (
+  <View {...props}>
+    {children}
+  </View>
+);
+<% } -%>
+
+export default <%= comp %>;

@@ -1,0 +1,11 @@
+---
+to: src/components/<%= name %>/stories.tsx
+---
+<% const comp = name -%>
+import { storiesOf } from "@storybook/react-native";
+import React from "react";
+import { <%= comp %> } from "./component";
+
+storiesOf("components/<%= comp %>", module).add("Default", () => (
+  <<%= comp %>  className="myClass" />
+));
