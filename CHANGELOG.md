@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/cball/commits-changelog-test/compare/v1.0.0...v1.1.0) (2018-11-17)
+
+
+### Features
+
+* **readme:** add another feature ([#10](https://github.com/cball/commits-changelog-test/issues/10)) ([dd11a61](https://github.com/cball/commits-changelog-test/commit/dd11a61)), closes [#13](https://github.com/cball/commits-changelog-test/issues/13)
+* **readme:** remove fake breaking change ([#9](https://github.com/cball/commits-changelog-test/issues/9)) ([ce1876f](https://github.com/cball/commits-changelog-test/commit/ce1876f)), closes [#123](https://github.com/cball/commits-changelog-test/issues/123)
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/cball/commits-changelog-test/compare/v1.0.0-beta.0...v1.0.0) (2018-11-17)
 
