@@ -9,7 +9,7 @@
     "test:e2e": "RN_SRC_EXT=e2e.js detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
     "test:e2e:ci": "RN_SRC_EXT=e2e.js detox build --configuration ios.sim.release && detox test --configuration ios.sim.release --cleanup",
     "lint": "tslint -p .",
-    "precommit": "lint-staged",
+    "commit": "commit",
     "storybook": "storybook start -p 7007",
     "g:component": "hygen component new --name",
     "g:screen": "hygen screen new --name",
@@ -29,6 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "@commitlint/prompt-cli": "^7.2.1",
     "@storybook/addon-actions": "^3.4.10",
     "@storybook/addon-links": "^3.4.10",
     "@storybook/addons": "^3.4.10",
@@ -89,11 +90,7 @@
     },
     "test-runner": "jest"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
+  
   "lint-staged": {
     "*.js": [
       "prettier --write",
