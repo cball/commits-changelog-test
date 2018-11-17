@@ -4,7 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --changedSince=master --watch",
+    "test:e2e": "RN_SRC_EXT=e2e.js detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
+    "test:e2e:ci": "RN_SRC_EXT=e2e.js detox build --configuration ios.sim.release && detox test --configuration ios.sim.release --cleanup",
+    "lint": "tslint -p .",
+    "precommit": "lint-staged",
+    "storybook": "storybook start -p 7007",
+    "g:component": "hygen component new --name",
+    "g:screen": "hygen screen new --name",
+    "g:util": "hygen util new --name",
+    "ios": "react-native run-ios --simulator='iPhone X'",
+    "preandroid": "adb reverse tcp:3030 tcp:3030 && adb reverse tcp:9090 tcp:9090",
+    "android": "react-native run-android",
+    "simulators": "xcrun simctl list"
   },
   "dependencies": {
     "@emotion/native": "^9.2.9",
@@ -14,6 +27,8 @@
     "react-navigation": "^2.18.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
     "@storybook/addon-actions": "^3.4.10",
     "@storybook/addon-links": "^3.4.10",
     "@storybook/addons": "^3.4.10",
@@ -39,6 +54,68 @@
     "typescript-styled-plugin": "^0.12.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "e2e",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ChangelogTest.app",
+        "build": "xcodebuild -workspace ios/ChangelogTest.xcworkspace -scheme ChangelogTest -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/ChangelogTest.app",
+        "build": "xcodebuild -workspace ios/ChangelogTest.xcworkspace -scheme ChangelogTest -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      }
+    },
+    "test-runner": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
+    ]
   }
 }
