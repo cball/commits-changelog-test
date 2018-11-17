@@ -10,6 +10,7 @@
     "test:e2e:ci": "RN_SRC_EXT=e2e.js detox build --configuration ios.sim.release && detox test --configuration ios.sim.release --cleanup",
     "lint": "tslint -p .",
     "commit": "commit",
+    "commit2": "git-cz",
     "storybook": "storybook start -p 7007",
     "g:component": "hygen component new --name",
     "g:screen": "hygen screen new --name",
@@ -39,6 +40,8 @@
     "@types/react": "^16.4.18",
     "@types/react-native": "^0.57.7",
     "babel-jest": "23.6.0",
+    "commitizen": "^3.0.4",
+    "cz-conventional-changelog": "2.1.0",
     "detox": "^9.0.4",
     "husky": "^1.1.2",
     "jest": "23.6.0",
@@ -90,7 +93,6 @@
     },
     "test-runner": "jest"
   },
-  
   "lint-staged": {
     "*.js": [
       "prettier --write",
@@ -114,5 +116,10 @@
     "assets": [
       "./src/assets/fonts/"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
