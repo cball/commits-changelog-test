@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.0"></a>
+# [1.0.0-beta.0](https://github.com/cball/commits-changelog-test/compare/v0.1.0-beta.4...v1.0.0-beta.0) (2018-11-17)
+
+
+### Bug Fixes
+
+* **readme:** testing a breaking change ([#8](https://github.com/cball/commits-changelog-test/issues/8)) ([eb040e4](https://github.com/cball/commits-changelog-test/commit/eb040e4)), closes [#123](https://github.com/cball/commits-changelog-test/issues/123)
+
+
+### BREAKING CHANGES
+
+* **readme:** this is fake so its not really breaking...
+
+
+
 <a name="0.1.0-beta.4"></a>
 # [0.1.0-beta.4](https://github.com/cball/commits-changelog-test/compare/v0.1.0-beta.3...v0.1.0-beta.4) (2018-11-17)
 
